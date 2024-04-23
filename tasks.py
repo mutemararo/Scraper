@@ -119,7 +119,7 @@ def runwebsite():
 
     time.sleep(10)
     articles = driver.find_elements('tag:article')
-
+    
     # WebDriverWait(driver, 360).until(
     #     EC.presence_of_all_elements_located((By.TAG_NAME, 'article'))
     # )
@@ -138,15 +138,15 @@ def runwebsite():
 
     j = 0
     while j < len(articles):
-        ttl = articles[j].find_element('//h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
+        ttl = driver.get_text('tag:article' + f'[{j}]//h3[@class="gc__title"]//span').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
         title.append(ttl)
-        string_list = articles[j].find_element('//div[@class="gc__excerpt"]//p').text.split('...')
+        string_list = driver.get_text('tag:article' + f'[{j}]//div[@class="gc__excerpt"]//p').split('...')
         desc.append(string_list[1].replace('\n', '').replace('<br>', '').replace('&nbsp;', ''))
         date.append(string_list[0])
         count.append(ttl.count(search_phrase) + string_list[1].count(search_phrase))
         money.append(True if(ttl.find('$' or 'dollars' or 'USD') != -1 or string_list[1].find('$' or 'dollars' or 'USD') != -1)
                     else False)
-        image_urls.append(articles[j].find_element('//img[@class="article-card__image gc__image"]').get_attribute('src'))
+        image_urls.append(driver.get_element_attribute('tag:article' + f'[{j}]//img[@class="article-card__image gc__image"]', 'src'))
         image_file_names.append(search_phrase + "_img" + str(j))
         j = j + 1
 
