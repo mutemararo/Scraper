@@ -33,7 +33,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 import time
 
-search_phrase = "War"
+search_phrase = "Terrorist"
 # options = webdriver.FirefoxOptions()
 
 # Function to scroll to position of 'Show More' Button.
