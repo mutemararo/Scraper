@@ -142,7 +142,7 @@ def runwebsite():
     while j < len(articles):
         # driver.get_text('//article' + f'[{j}]//h3[@class="gc__title"]//span').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
         
-        ttl = articles[j].find_element('xpath://h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
+        ttl = articles[j].find_element(By.XPATH, '//h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
         title.append(ttl)
         string_list = articles[j].find_element('xpath://div[@class="gc__excerpt"]//p').split('...')
         # driver.get_text('//article' + f'[{j}]//div[@class="gc__excerpt"]//p').split('...')
