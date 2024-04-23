@@ -13,6 +13,8 @@ import requests
 import io
 from PIL import Image
 
+
+
 FILE_NAME = "challenge.xlsx"
 OUTPUT_DIR = Path(os.environ.get('ROBOT_ARTIFACTS'))
 EXCEL_URL = f"https://rpachallenge.com/assets/downloadFiles/{FILE_NAME}"
@@ -135,18 +137,21 @@ def runwebsite():
     money = []
     image_urls = []
     image_file_names = []
-
+    
     j = 0
     while j < len(articles):
-        ttl = driver.get_text('//article' + f'[{j}]//h3[@class="gc__title"]//span').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
+        # driver.get_text('//article' + f'[{j}]//h3[@class="gc__title"]//span').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
+        
+        ttl = articles[j].find_element('xpath://h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
         title.append(ttl)
-        string_list = driver.get_text('//article' + f'[{j}]//div[@class="gc__excerpt"]//p').split('...')
+        string_list = articles[j].find_element('xpath://div[@class="gc__excerpt"]//p').split('...')
+        # driver.get_text('//article' + f'[{j}]//div[@class="gc__excerpt"]//p').split('...')
         desc.append(string_list[1].replace('\n', '').replace('<br>', '').replace('&nbsp;', ''))
         date.append(string_list[0])
         count.append(ttl.count(search_phrase) + string_list[1].count(search_phrase))
         money.append(True if(ttl.find('$' or 'dollars' or 'USD') != -1 or string_list[1].find('$' or 'dollars' or 'USD') != -1)
                     else False)
-        image_urls.append(driver.get_element_attribute('//article' + f'[{j}]//img[@class="article-card__image gc__image"]', 'src'))
+        image_urls.append(articles[j].find_element('xpath://img[@class="article-card__image gc__image"]').get_attribute('src'))
         image_file_names.append(search_phrase + "_img" + str(j))
         j = j + 1
 
