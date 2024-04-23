@@ -33,7 +33,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 import time
 
-search_phrase = "Terrorist"
+search_phrase = "Violence"
 # options = webdriver.FirefoxOptions()
 
 # Function to scroll to position of 'Show More' Button.
@@ -142,11 +142,11 @@ def runwebsite():
     while j < len(articles):
         # driver.get_text('//article' + f'[{j}]//h3[@class="gc__title"]//span').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
         
-        ttl = articles[j].find_element(By.XPATH, './/h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
+        ttl = articles[j].find_element(By.XPATH, './/h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '').replace('Â­', '')
         title.append(ttl)
         string_list = articles[j].find_element(By.XPATH, './/div[@class="gc__excerpt"]//p').text.split('...')
         # driver.get_text('//article' + f'[{j}]//div[@class="gc__excerpt"]//p').split('...')
-        desc.append(string_list[1].replace('\n', '').replace('<br>', '').replace('&nbsp;', ''))
+        desc.append(string_list[1].replace('\n', '').replace('<br>', '').replace('&nbsp;', '').replace('Â­', ''))
         date.append(string_list[0])
         count.append(ttl.count(search_phrase) + string_list[1].count(search_phrase))
         money.append(True if(ttl.find('$' or 'dollars' or 'USD') != -1 or string_list[1].find('$' or 'dollars' or 'USD') != -1)
