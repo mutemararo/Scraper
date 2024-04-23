@@ -106,7 +106,7 @@ def runwebsite():
             break
         i = i + 1
 
-    
+    time.sleep(30)
     # Scroll down and Press show more button
     # driver.wait_and_click_button("Show more")
     show_more_btn = driver.find_element("xpath://button[.//span[text()[contains(., 'Click here to show more content')]]]")
