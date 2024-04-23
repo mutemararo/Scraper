@@ -108,16 +108,14 @@ def runwebsite():
 
     
     # Scroll down and Press show more button
-    show_more_btn = driver.wait_and_click_button("Show more")
-    # WebDriverWait(driver, 60).until(
-    #     EC.presence_of_element_located("class:show-more-button grid-full-width")
-    # )
+    # driver.wait_and_click_button("Show more")
+    show_more_btn = WebDriverWait(driver, 60).until(
+        EC.presence_of_element_located("class:show-more-button grid-full-width")
+    )
     
+    scroll_shim(driver, show_more_btn)
 
-    # if 'firefox' in driver.capabilities['browserName']:
-    #     scroll_shim(driver, show_more_btn)
-
-    # ActionChains(driver).move_to_element(show_more_btn).click().perform()
+    ActionChains(driver).move_to_element(show_more_btn).click().perform()
 
     time.sleep(10)
     articles = driver.find_elements('tag:article')
