@@ -107,9 +107,10 @@ def runwebsite():
     
     # Scroll down and Press show more button
     EC.visibility_of_element_located
-    show_more_btn = WebDriverWait(driver, 60).until(
-        EC.presence_of_element_located("class:show-more-button grid-full-width")
-    )
+    show_more_btn = driver.wait_until_page_contains_element("class:show-more-button grid-full-width", 60)
+    # WebDriverWait(driver, 60).until(
+    #     EC.presence_of_element_located("class:show-more-button grid-full-width")
+    # )
     
 
     # if 'firefox' in driver.capabilities['browserName']:
