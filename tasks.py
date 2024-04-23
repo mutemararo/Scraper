@@ -138,15 +138,15 @@ def runwebsite():
 
     j = 0
     while j < len(articles):
-        ttl = articles[j].find_element('.//h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
+        ttl = articles[j].find_element('//h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
         title.append(ttl)
-        string_list = articles[j].find_element('.//div[@class="gc__excerpt"]//p').text.split('...')
+        string_list = articles[j].find_element('//div[@class="gc__excerpt"]//p').text.split('...')
         desc.append(string_list[1].replace('\n', '').replace('<br>', '').replace('&nbsp;', ''))
         date.append(string_list[0])
         count.append(ttl.count(search_phrase) + string_list[1].count(search_phrase))
         money.append(True if(ttl.find('$' or 'dollars' or 'USD') != -1 or string_list[1].find('$' or 'dollars' or 'USD') != -1)
                     else False)
-        image_urls.append(articles[j].find_element('.//img[@class="article-card__image gc__image"]').get_attribute('src'))
+        image_urls.append(articles[j].find_element('//img[@class="article-card__image gc__image"]').get_attribute('src'))
         image_file_names.append(search_phrase + "_img" + str(j))
         j = j + 1
 
