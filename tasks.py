@@ -144,7 +144,7 @@ def runwebsite():
         
         ttl = articles[j].find_element(By.XPATH, '//h3[@class="gc__title"]//span').get_attribute('innerHTML').replace('\n', '').replace('<br>', '').replace('&nbsp;', '')
         title.append(ttl)
-        string_list = articles[j].find_element(By.XPATH, '//div[@class="gc__excerpt"]//p').split('...')
+        string_list = articles[j].find_element(By.XPATH, '//div[@class="gc__excerpt"]//p').text.split('...')
         # driver.get_text('//article' + f'[{j}]//div[@class="gc__excerpt"]//p').split('...')
         desc.append(string_list[1].replace('\n', '').replace('<br>', '').replace('&nbsp;', ''))
         date.append(string_list[0])
