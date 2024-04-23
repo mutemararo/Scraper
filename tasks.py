@@ -46,8 +46,10 @@ def scroll_shim(passed_in_driver, object):
         y
     )
     scroll_nav_out_of_way = 'window.scrollBy(0, -120);'
-    passed_in_driver.execute_script(scroll_by_coord)
-    passed_in_driver.execute_script(scroll_nav_out_of_way)
+    passed_in_driver.execute_javascript(scroll_by_coord)
+    passed_in_driver.execute_javascript(scroll_nav_out_of_way)
+
+
 
 # Function to download article image
 def download_image(download_path, url, file_name):
@@ -79,7 +81,6 @@ def runwebsite():
     driver.set_selenium_page_load_timeout(10)
     driver.open_available_browser("https://www.aljazeera.com/")
     # driver.open_available_browser4
-
     # driver.maximize_browser_window()
     # Find and click search button
     # buttons = driver.find_element('//button[.//span[text()[contains(., "Click here to search")]]]')
