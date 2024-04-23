@@ -33,7 +33,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 import time
 
-search_phrase = "Violence"
+search_phrase = "gold"
 # options = webdriver.FirefoxOptions()
 
 # Function to scroll to position of 'Show More' Button.
@@ -117,7 +117,7 @@ def runwebsite():
 
     scroll_shim(driver, show_more_btn)
 
-    ActionChains(driver).move_to_element(show_more_btn).click()
+    ActionChains(driver).move_to_element(show_more_btn).click().perform()
 
     time.sleep(10)
     articles = driver.find_elements('tag:article')
