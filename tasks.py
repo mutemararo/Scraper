@@ -110,9 +110,9 @@ def runwebsite():
     # Scroll down and Press show more button
     # driver.wait_and_click_button("Show more")
     show_more_btn = WebDriverWait(driver, 60).until(
-        EC.presence_of_element_located("xpath://button[.//span[text()[contains(., 'Click here to show more content')]]]")
+        EC.presence_of_element_located(("xpath://*[.//span[text()[contains(., 'Click here to show more content')]]]"))
     )
-    
+
     scroll_shim(driver, show_more_btn)
 
     ActionChains(driver).move_to_element(show_more_btn).click().perform()
