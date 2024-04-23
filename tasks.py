@@ -108,7 +108,7 @@ def runwebsite():
     # Scroll down and Press show more button
     EC.visibility_of_element_located
     show_more_btn = WebDriverWait(driver, 60).until(
-        EC.presence_of_element_located(('xpath', 'class:show-more-button grid-full-width'))
+        EC.presence_of_element_located(("class:show-more-button grid-full-width"))
     )
     
 
