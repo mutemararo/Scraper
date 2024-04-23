@@ -158,10 +158,10 @@ def runwebsite():
     dframe = pd.DataFrame({'title':title, 'description': desc, 'date': date, 'search_phrase count': count, 'currency': money, 'iamge_name': image_file_names})
 
     print(dframe)
-    dframe.to_csv("files\\" + search_phrase + ".csv")
+    dframe.to_csv("output/files/" + search_phrase + ".csv")
 
     for i, url in enumerate(image_urls):
-        download_image("img\\", url, search_phrase + "_img" + str(i) + ".jpg")
+        download_image("output/img/" + search_phrase + "/", url, search_phrase + "_img" + str(i) + ".jpg")
     # urls = get_image_urls(driver=driver)
 
     # for i, url in enumerate(urls):
