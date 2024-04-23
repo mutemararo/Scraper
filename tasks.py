@@ -108,7 +108,7 @@ def runwebsite():
 
     
     # Scroll down and Press show more button
-    # show_more_btn = driver.wait_until_page_contains_element("class:show-more-button grid-full-width", 160)
+    show_more_btn = driver.wait_and_click_button("Show more")
     # WebDriverWait(driver, 60).until(
     #     EC.presence_of_element_located("class:show-more-button grid-full-width")
     # )
@@ -161,7 +161,7 @@ def runwebsite():
     dframe.to_csv("output/" + search_phrase + ".csv")
 
     for i, url in enumerate(image_urls):
-        download_image("output/" + search_phrase + "/", url, search_phrase + "_img" + str(i) + ".jpg")
+        download_image("output/", url, search_phrase + "_img" + str(i) + ".jpg")
     # urls = get_image_urls(driver=driver)
 
     # for i, url in enumerate(urls):
